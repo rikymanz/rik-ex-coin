@@ -1,0 +1,36 @@
+GET http://localhost:3001/helpdesk/
+
+###
+
+GET http://192.168.0.39:3005/helpdesk/1
+
+###
+
+DELETE http://192.168.0.39:3005/helpdesk/4
+
+###
+
+POST http://localhost:3001/helpdesk/
+Content-Type: application/json
+
+{
+  "id_req_user": 35,
+  "id_it_user": 33,
+  "title": "SAP",
+  "category": "altro",
+  "request": "SAP da errore",
+  "solution": "Non sanno usare SAP",
+  "status":"1",
+  "finish_date": "2020-08-31",
+  "creation_user": 35,
+  "creation_date":"2020-08-26"
+}
+
+###
+
+PATCH http://localhost:3001/helpdesk/3
+Content-Type: application/json 
+
+{
+  "status": 0
+}
