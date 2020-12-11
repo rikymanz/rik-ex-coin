@@ -1,5 +1,4 @@
 const mssql = require('mssql');
-require('dotenv').config();
 
 const pool = new mssql.ConnectionPool({
     "server": 'rik-sql-01.database.windows.net',
