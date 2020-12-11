@@ -31,5 +31,5 @@ jobs:
       with:
         app-name: 'rik-ex-coin'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_abf2ae50591b446897fce050b35da782 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b8c572444e994a599683c40a543c9b56 }}
         package: .
