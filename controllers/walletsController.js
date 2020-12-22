@@ -14,88 +14,58 @@ const Wallets = {
         } else {
             return reply.status(500).send({ error: "Data not found"});
         }
-    }
+    },
 
-}
+    post: async( request , reply ) => {
+        // Create a helpdesk ticket
+        const wallet = {
+          owner: request.body.owner,
+          coin: request.body.coin,
+          quantity: request.body.quantity,
+          color: request.body.color
+        };
 
+        // Save ticket in the database
+        const res = await model.post(wallet)
+        if ( res ) {
+          return reply.status(200).send(true);
+        } else {
+            return reply.status(500).send({ error: "Error"});
+        }
 
-/*
-// Add ticket
-router.post('/', (req, res) => {
-    // Validate request
-  if (!req.body) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-  }
-  console.log(req.body);
-  // Create a helpdesk ticket
-  const helpdesk = new Helpdesk({
-    id_req_user: req.body.id_req_user,
-    category: req.body.category,
-    title: req.body.title,
-    request: req.body.request,
-    creation_user: req.body.creation_user,
-    creation_date: req.body.creation_date
-  });
+    }, // fine moetodo post
 
-  // Save ticket in the database
-  Helpdesk.create(helpdesk, (err, data) => {
-    
-    if (err)
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the ticket."
-      });
-    else res.send(data);
-  });
-})
+    delete: async( request , reply ) => {
+      const res = await model.delete( request.params.id );
+      if ( res ) {
+          return reply.status(200).send(true);
+      } else {
+          return reply.status(500).send({ error: "Data not found"});
+      }
+    },  // fine delete
 
-// Update ticket
-router.patch('/:id', (req, res) => {
-    // Validate Request
-    if (!req.body) {
-        res.status(400).send({
-          message: "Content can not be empty!"
-        });
+    update: async( request , reply ) => {
+      const wallet = {
+        owner: request.body.owner,
+        coin: request.body.coin,
+        quantity: request.body.quantity,
+        color: request.body.color
       }
 
-      Helpdesk.updateById(
-        req.params.id,
-        req.body,
-        (err, data) => {
-          if (err) {
-            if (err.kind === "not_found") {
-              res.status(404).send({
-                message: `Not found ticket with id ${req.params.id}.`
-              });
-            } else {
-              res.status(500).send({
-                message: "Error updating ticket with id " + req.params.id
-              });
-            }
-          } else res.send(data);
-        }
-      );
-})
+      const wallet_id = request.params.id 
 
-// Delete ticket
-router.delete('/:id', (req, res) => {
-    Helpdesk.remove(req.params.id, (err, data) => {
-        if (err) {
-          if (err.kind === "not_found") {
-            res.status(404).send({
-              message: `Not found ticket with id ${req.params.id}.`
-            });
-          } else {
-            res.status(500).send({
-              message: "Could not delete ticket with id " + req.params.id
-            });
-          }
-        } else res.send({ message: `ticket was deleted successfully!` });
-      });
-})
+      const res = await model.update( wallet , wallet_id );
+
+      if ( res ) {
+        return reply.status(200).send(true);
+      } else {
+        return reply.status(500).send({ error: "Error"});
+      }
+    },  // fine update
+
+} // fine classe con metodi
 
 
-*/
+
+
 module.exports = Wallets

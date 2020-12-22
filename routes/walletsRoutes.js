@@ -2,23 +2,19 @@ const express = require('express')
 const router = express.Router()
 const Controller = require('../controllers/walletsController');
 
-// Get all tickets
-router.get('/',Controller.getAll)
+// Get all wallets
+router.get( '/',Controller.getAll )
 
-// Get ticket
-router.get('/:id', Controller.getOne)
+// Get one wallet
+router.get( '/:id', Controller.getOne )
 
+// post wallet
+router.post( '/', Controller.post )
 
-/*
+// delete wallet
+router.delete( '/:id', Controller.delete )
 
-// Add ticket
-router.post('/', )
+// update
+router.patch('/:id', Controller.update ) 
 
-// Update ticket
-router.patch('/:id',) 
-
-// Delete ticket
-router.delete('/:id',)
-
-*/
 module.exports = router
