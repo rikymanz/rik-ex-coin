@@ -6,7 +6,7 @@ GET http://localhost:3000/wallets/4
 
 ###
 
-DELETE http://localhost:3000/wallets/8
+DELETE http://localhost:3000/wallets/5
 
 ###
 
@@ -14,7 +14,7 @@ POST http://localhost:3000/wallets/
 Content-Type: application/json
 
 {
-  "owner": "R",
+  "owner": "z",
   "coin": "BTC",
   "quantity": 0.11,
   "color": "#FFAAAA"
@@ -22,7 +22,7 @@ Content-Type: application/json
 
 ###
 
-PATCH http://localhost:3000/wallets/4
+PATCH http://localhost:3000/wallets/10
 Content-Type: application/json 
 
 {
